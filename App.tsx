@@ -1,27 +1,17 @@
-import {NavigationContainer} from '@react-navigation/native';
-import React, {useEffect, useState} from 'react';
-import NetInfo, {NetworkStatusProvider} from './src/network/networkUtil';
-import AppNavigator from './src/route/AppNavigator';
+import React from 'react';
+import {View, Text, StyleSheet} from 'react-native';
 const App = () => {
-  const [isNetworkConnected, setConnectionStatus] = useState<boolean | null>(
-    true,
-  );
-  const networkListenerFunction = () => {
-    return NetInfo.addEventListener(state => {
-      setConnectionStatus(state.isConnected);
-    });
-  };
-  console.log(isNetworkConnected);
-  useEffect(() => {
-    const deregisterNetworkListener = networkListenerFunction();
-    return () => deregisterNetworkListener();
-  });
   return (
-    <NavigationContainer>
-      <NetworkStatusProvider value={isNetworkConnected}>
-        <AppNavigator />
-      </NetworkStatusProvider>
-    </NavigationContainer>
+    <View style={styles.container}>
+      <Text>Sachin</Text>
+    </View>
   );
 };
 export default App;
+const styles = StyleSheet.create({
+  container: {
+    justifyContent: 'center',
+    flex: 1,
+    alignItems: 'center',
+  },
+});
