@@ -14,7 +14,7 @@ const SelectedKeywords = (props: Props) => {
   const activeWords = useRef<Set<string>>(new Set()).current;
   const onDeletePress = () => {
     onDelete([...activeWords]);
-    activeWords.clear()
+    activeWords.clear();
   };
   const onPress = (item: string) => {
     if (activeWords.has(item)) {
@@ -40,9 +40,7 @@ const SelectedKeywords = (props: Props) => {
                 title={item}
                 onPress={() => onPress(item)}
                 key={index}
-                textStyle={
-                  activeWords.has(item) ? styles.activeText : styles.addText
-                }
+                textStyle={styles.addText}
                 buttonStyle={
                   activeWords.has(item) ? styles.activeButton : styles.button
                 }
@@ -59,10 +57,10 @@ const styles = StyleSheet.create({
   container: {
     width: '100%',
 
-    paddingHorizontal: 16,
     flex: 1,
   },
   selectedView: {
+    paddingHorizontal: 16,
     ...GlobalStyles.rowAlignCenter,
     flexWrap: 'wrap',
     flex: 1,
@@ -70,16 +68,12 @@ const styles = StyleSheet.create({
   button: {
     padding: 4,
     borderRadius: 5,
-    backgroundColor: colors.selectedWords,
+    backgroundColor: colors.blueBadge,
     borderColor: colors.selectedBorder,
     borderWidth: 1,
     margin: 5,
   },
   addText: {
-    ...GlobalStyles.medium_14,
-    color: colors.darkBlue,
-  },
-  activeText: {
     ...GlobalStyles.medium_14,
     color: colors.white,
   },
@@ -89,7 +83,7 @@ const styles = StyleSheet.create({
     borderColor: colors.selectedBorder,
     borderWidth: 1,
     margin: 5,
-    backgroundColor: colors.darkBlue,
+    backgroundColor: colors.activeColor,
   },
   browseComponent: {
     margin: 16,

@@ -20,7 +20,8 @@ export const colors = {
   addTextBackground: '#F6F6F6',
   selectedWords: '#F6F6F8',
   selectedBorder: '#EAEAEA',
-  activeColor: '#ADD8E6',
+  activeColor: '#284bdd',
+  blueBadge: '#475679',
 };
 
 export const deviceWidth = Dimensions.get('window').width;
@@ -76,8 +77,8 @@ export const GlobalStyles = {
     flexDirection: 'row',
     alignItems: 'center',
   },
-  rowJustifyCenter:{
+  rowJustifyCenter: {
     flexDirection: 'row',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
 };

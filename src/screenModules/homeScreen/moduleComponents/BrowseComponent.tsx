@@ -11,7 +11,6 @@ type Props = {
 };
 const BrowseComponent = (props: Props) => {
   const {totalActiveKeywords, onDeletePress} = props;
-  console.log(totalActiveKeywords);
   return (
     <View style={styles.container}>
       <View style={{flex: 1}}>
@@ -48,9 +47,10 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   button: {
-    padding: 4,
+    padding: 2,
     alignSelf: 'flex-start',
-    borderRadius: 2,
+    borderRadius: 5,
+    paddingHorizontal: 10,
     backgroundColor: colors.white,
     elevation: 2,
   },

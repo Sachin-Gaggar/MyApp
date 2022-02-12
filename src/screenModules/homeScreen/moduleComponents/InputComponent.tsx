@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {Ref, useRef, useState} from 'react';
 import {
   View,
   Text,
@@ -6,6 +6,7 @@ import {
   TextInput,
   TouchableOpacity,
   Image,
+  Keyboard,
 } from 'react-native';
 import AddPlus from '../../../assets/svg/Add plus.svg';
 // @ts-ignore
@@ -14,11 +15,16 @@ import {strings} from '../../../utils/String';
 type Props = {
   onAddPress: Function;
 };
-const InputComponent = (props: Props) => {
-  const {onAddPress} = props;
+const InputComponent = (props: Props, ref: any) => {
+  const {onAddPress, onEnterPress} = props;
   const [textValue, setTextValue] = useState<string | null>();
   const onChangeText = (text: string) => {
     setTextValue(text);
+  };
+  const refocus = async () => {
+    let text = textValue;
+    await setTextValue('');
+    onEnterPress(text);
   };
   const onPress = () => {
     onAddPress(textValue);
@@ -53,9 +59,14 @@ const InputComponent = (props: Props) => {
         <TextInput
           placeholder={strings.addKeyword}
           style={styles.text}
+          ref={ref}
           // @ts-ignore
           value={textValue}
+          keyboardType={'default'}
           onChangeText={onChangeText}
+          onSubmitEditing={() => {
+            refocus();
+          }}
           placeholderTextColor={colors.placeHolder}
         />
       </View>
@@ -63,7 +74,7 @@ const InputComponent = (props: Props) => {
     </View>
   );
 };
-export default InputComponent;
+export default React.forwardRef(InputComponent);
 const styles = StyleSheet.create({
   //@ts-ignore
   container: {

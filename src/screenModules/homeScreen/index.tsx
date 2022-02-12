@@ -1,20 +1,14 @@
-import React, {useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
   View,
   StyleSheet,
   Text,
   ScrollView,
-  ActivityIndicator,
 } from 'react-native';
 import ButtonComponent from '../../components/ButtonComponent';
 import HeaderComponent from '../../components/HeaderComponent';
 import InputComponent from './moduleComponents/InputComponent';
-import {
-  colors,
-  deviceWidth,
-  GlobalStyles,
-  subText,
-} from '../../utils/Constant';
+import {colors, GlobalStyles, subText} from '../../utils/Constant';
 import {strings} from '../../utils/String';
 import SelectedKeywords from './moduleComponents/SelectedWords';
 import {displaySubText} from '../../utils/CommonUtil';
@@ -23,6 +17,11 @@ import ActivityIndicatorComponent from '../../components/ActivityIndicator';
 const HomeScreen = () => {
   const [selectedWords, setSelectedWords] = useState<string[]>([]);
   const [showLoader, setShowLoader] = useState<boolean>(false);
+  const keyboardRef = useRef();
+  const [keyboardShow,showKeyboard] = useState(false);
+  useEffect(() => {
+    keyboardRef?.current.focus();
+  }, [keyboardShow]);
 
   const onAddPress = (text: string) => {
     let words = [...selectedWords];
@@ -41,6 +40,15 @@ const HomeScreen = () => {
     setSelectedWords(selectedArrays);
     setShowLoader(false);
   };
+  const onEnterPress = text => {
+    let words = [...selectedWords];
+    showKeyboard(false)
+    if (!words.includes(text)) {
+      words.push(text);
+      setSelectedWords(words);
+      showKeyboard(true)
+    }
+  };
   return (
     <>
       <HeaderComponent title={strings.iHave} />
@@ -54,7 +62,11 @@ const HomeScreen = () => {
             like {displaySubText(subText)} etc.
           </Text>
         </View>
-        <InputComponent onAddPress={onAddPress} />
+        <InputComponent
+          onAddPress={onAddPress}
+          onEnterPress={onEnterPress}
+          ref={keyboardRef}
+        />
         {selectedWords && (
           <SelectedKeywords selectedWords={selectedWords} onDelete={onDelete} />
         )}
@@ -82,12 +94,12 @@ const styles = StyleSheet.create({
   heading: {
     ...GlobalStyles.medium_16,
     color: colors.darkBlue,
-    lineHeight: 20
+    lineHeight: 20,
   },
   counterContainer: {
     width: '100%',
-    padding:5,
-    alignItems: 'flex-end'
+    padding: 5,
+    alignItems: 'flex-end',
   },
   fadedText: {
     opacity: 0.5,
