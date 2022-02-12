@@ -4,5 +4,6 @@ export const strings = {
   addKeyword: 'Add Keywords ...',
   add: 'ADD',
   next: '> Next',
-  browse: 'Browse'
+  browse: 'Browse',
+  selected: 'selected',
 };

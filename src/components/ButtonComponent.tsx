@@ -5,6 +5,8 @@ import {
   TouchableOpacity,
   ViewStyle,
   TextStyle,
+  GestureResponderEvent,
+  NativeTouchEvent,
 } from 'react-native';
 import {colors} from '../utils/Constant';
 type Props = {

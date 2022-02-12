@@ -1,28 +1,45 @@
 import React, {useState} from 'react';
-import {View, StyleSheet, Text, ScrollView} from 'react-native';
-import BrowseComponent from './moduleComponents/BrowseComponent';
+import {
+  View,
+  StyleSheet,
+  Text,
+  ScrollView,
+  ActivityIndicator,
+} from 'react-native';
 import ButtonComponent from '../../components/ButtonComponent';
 import HeaderComponent from '../../components/HeaderComponent';
 import InputComponent from './moduleComponents/InputComponent';
-import {colors, deviceWidth, GlobalStyles, subText} from '../../utils/Constant';
+import {
+  colors,
+  deviceWidth,
+  GlobalStyles,
+  subText,
+} from '../../utils/Constant';
 import {strings} from '../../utils/String';
 import SelectedKeywords from './moduleComponents/SelectedWords';
+import {displaySubText} from '../../utils/CommonUtil';
+import ActivityIndicatorComponent from '../../components/ActivityIndicator';
 
 const HomeScreen = () => {
-  const [selectedWords, setSelectedWords] = useState<string[]>();
-  const displaySubText = () => {
-    return subText.map((item: string, index: number) => {
-      if (index < subText.length - 1) {
-        return `${item}, `;
-      } else {
-        return item;
-      }
-    });
-  };
+  const [selectedWords, setSelectedWords] = useState<string[]>([]);
+  const [showLoader, setShowLoader] = useState<boolean>(false);
+
   const onAddPress = (text: string) => {
-    let words = selectedWords?.length > 0 ? [...selectedWords] : [];
-    words.push(text);
-    setSelectedWords(words);
+    let words = [...selectedWords];
+    if (!words.includes(text)) {
+      words.push(text);
+      setSelectedWords(words);
+    }
+  };
+  const onDelete = (tobeDeleted: string[]) => {
+    setShowLoader(true);
+    let selectedArrays = [...selectedWords];
+    for (let item in tobeDeleted) {
+      let index = selectedArrays.indexOf(item);
+      selectedArrays.splice(index, 1);
+    }
+    setSelectedWords(selectedArrays);
+    setShowLoader(false);
   };
   return (
     <>
@@ -33,17 +50,19 @@ const HomeScreen = () => {
         </View>
         <View style={styles.headingContainer}>
           <Text style={styles.heading}>{strings.listAllITems}</Text>
-          <Text style={styles.fadedText}>like {displaySubText()} etc.</Text>
+          <Text style={styles.fadedText}>
+            like {displaySubText(subText)} etc.
+          </Text>
         </View>
         <InputComponent onAddPress={onAddPress} />
-        <View style={styles.browseComponent}>
-          <BrowseComponent />
-        </View>
-        <SelectedKeywords selectedWords={selectedWords} />
+        {selectedWords && (
+          <SelectedKeywords selectedWords={selectedWords} onDelete={onDelete} />
+        )}
       </ScrollView>
       <View style={styles.footer}>
         <ButtonComponent title={strings.next} />
       </View>
+      <ActivityIndicatorComponent showLoader={showLoader} />
     </>
   );
 };
@@ -59,15 +78,21 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     backgroundColor: colors.gold,
   },
-  headingContainer: {paddingHorizontal: 16, marginBottom: 20},
+  headingContainer: {paddingHorizontal: 16, marginBottom: 25},
   heading: {
     ...GlobalStyles.medium_16,
     color: colors.darkBlue,
+    lineHeight: 20
   },
-  counterContainer: {width: deviceWidth, alignItems: 'flex-end'},
+  counterContainer: {
+    width: '100%',
+    padding:5,
+    alignItems: 'flex-end'
+  },
   fadedText: {
     opacity: 0.5,
     color: colors.mediumGrey,
+    lineHeight: 19,
     ...GlobalStyles.medium_15,
   },
   footer: {

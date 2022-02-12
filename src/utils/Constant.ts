@@ -20,6 +20,7 @@ export const colors = {
   addTextBackground: '#F6F6F6',
   selectedWords: '#F6F6F8',
   selectedBorder: '#EAEAEA',
+  activeColor: '#ADD8E6',
 };
 
 export const deviceWidth = Dimensions.get('window').width;

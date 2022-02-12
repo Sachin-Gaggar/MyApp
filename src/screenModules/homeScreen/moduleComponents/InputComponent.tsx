@@ -8,7 +8,7 @@ import {
   Image,
 } from 'react-native';
 import AddPlus from '../../../assets/svg/Add plus.svg';
-import Mic from '../../../assets/svg/mic.svg';
+// @ts-ignore
 import {colors, GlobalStyles, imagePath} from '../../../utils/Constant';
 import {strings} from '../../../utils/String';
 type Props = {
@@ -22,7 +22,7 @@ const InputComponent = (props: Props) => {
   };
   const onPress = () => {
     onAddPress(textValue);
-    setTextValue();
+    setTextValue('');
   };
   const iconDisplay = () => {
     if (textValue) {
@@ -38,6 +38,7 @@ const InputComponent = (props: Props) => {
       return (
         <TouchableOpacity style={styles.recordIcon}>
           <Image
+            // @ts-ignore
             style={styles.micIcon}
             source={imagePath.mic}
             resizeMode={'contain'}
@@ -52,6 +53,7 @@ const InputComponent = (props: Props) => {
         <TextInput
           placeholder={strings.addKeyword}
           style={styles.text}
+          // @ts-ignore
           value={textValue}
           onChangeText={onChangeText}
           placeholderTextColor={colors.placeHolder}
@@ -63,6 +65,7 @@ const InputComponent = (props: Props) => {
 };
 export default InputComponent;
 const styles = StyleSheet.create({
+  //@ts-ignore
   container: {
     width: '100%',
     ...GlobalStyles.rowAlignCenter,
