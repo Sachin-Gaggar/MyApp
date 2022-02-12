@@ -1,3 +1,5 @@
+import {Dimensions} from 'react-native';
+
 export const colors = {
   red: '#ff0000',
   white: '#ffffff',
@@ -11,8 +13,17 @@ export const colors = {
   honeyYellow: '#fdb833',
   dodgerBlue: '#1789fc',
   whiteSmoke: '#f5f5f5',
+  mediumGrey: '#979797',
+  placeHolder: '#D0CFD3',
+  blueShade: '#00006F',
+  darkBlue: '#252880',
+  addTextBackground: '#F6F6F6',
+  selectedWords: '#F6F6F8',
+  selectedBorder: '#EAEAEA',
 };
 
+export const deviceWidth = Dimensions.get('window').width;
+export const deviceHeight = Dimensions.get('window').height;
 export const screenNames = {
   startupScreen: 'Start Up Screen',
   homeScreen: 'Home Screen',
@@ -20,5 +31,52 @@ export const screenNames = {
 };
 
 export const imagePath = {
-  gucciBackground: require('../assets/image/gucci.jpeg'),
+  mic: require('../assets/image/mic.png'),
+};
+
+export const subText = [
+  'Table',
+  'Chair',
+  'Bible',
+  'IPhone 7',
+  'Bike Blue UK 9 Running Shoes',
+  'Red Shirt',
+  'BMW X5 Car',
+  'RV',
+  'Airgun',
+  'Drone',
+  'Rain Coat',
+  'Horse',
+];
+
+export const GlobalStyles = {
+  medium_blueShade_20: {
+    fontFamily: 'Heebo-Medium',
+    fontSize: 20,
+    color: colors.blueShade,
+  },
+  medium_16: {
+    fontFamily: 'Heebo-Medium',
+    fontSize: 16,
+  },
+  medium_15: {
+    fontFamily: 'Heebo-Medium',
+    fontSize: 15,
+  },
+  medium_14: {
+    fontFamily: 'Heebo-Medium',
+    fontSize: 14,
+  },
+  medium_12: {
+    fontFamily: 'Heebo-Medium',
+    fontSize: 12,
+  },
+  rowAlignCenter: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  rowJustifyCenter:{
+    flexDirection: 'row',
+    justifyContent: 'center'
+  },
 };

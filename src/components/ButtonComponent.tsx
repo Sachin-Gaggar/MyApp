@@ -1,7 +1,19 @@
 import React from 'react';
-import {Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  ViewStyle,
+  TextStyle,
+} from 'react-native';
 import {colors} from '../utils/Constant';
-const ButtonComponent = (props: any) => {
+type Props = {
+  title: string;
+  onPress?: Function;
+  buttonStyle?: ViewStyle;
+  textStyle?: TextStyle;
+};
+const ButtonComponent = (props: Props) => {
   const {
     title,
     onPress = () => {},
@@ -22,9 +34,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   buttonView: {
-    padding: 15,
-    borderRadius: 8,
-    backgroundColor: colors.gold,
+    paddingHorizontal: 20,
+    borderRadius: 25,
+    paddingVertical: 10,
+    elevation: 4,
+    backgroundColor: colors.darkBlue,
   },
   text: {
     color: colors.white,
