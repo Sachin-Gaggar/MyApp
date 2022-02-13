@@ -28,8 +28,8 @@ const HomeScreen = () => {
   const onDelete = (tobeDeleted: string[]) => {
     setShowLoader(true);
     let selectedArrays = [...selectedWords];
-    for (let item in tobeDeleted) {
-      let index = selectedArrays.indexOf(item);
+    for (let i = 0; i < tobeDeleted.length; i++) {
+      let index = selectedArrays.indexOf(tobeDeleted[i]);
       selectedArrays.splice(index, 1);
     }
     setSelectedWords(selectedArrays);
