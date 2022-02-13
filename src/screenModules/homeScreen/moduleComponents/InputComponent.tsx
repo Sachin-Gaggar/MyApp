@@ -106,11 +106,11 @@ const styles = StyleSheet.create({
   recordIcon: {
     borderRadius: 10,
     marginHorizontal: 10,
-    padding: 4,
+    padding: 2,
     backgroundColor: colors.addTextBackground,
   },
   micIcon: {
-    width: 15,
-    height: 15,
+    width: 20,
+    height: 20,
   },
 });
