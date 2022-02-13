@@ -21,7 +21,8 @@ export const colors = {
   selectedWords: '#F6F6F8',
   selectedBorder: '#EAEAEA',
   activeColor: '#284bdd',
-  blueBadge: '#475679',
+  blueBadge: '#455A97',
+  recordBlue: '#274FD4',
 };
 
 export const deviceWidth = Dimensions.get('window').width;
@@ -57,6 +58,11 @@ export const GlobalStyles = {
     fontSize: 20,
     color: colors.blueShade,
   },
+  medium_blueShade_18: {
+    fontFamily: 'Heebo-Medium',
+    fontSize: 18,
+    color: colors.blueShade,
+  },
   medium_16: {
     fontFamily: 'Heebo-Medium',
     fontSize: 16,
@@ -72,6 +78,10 @@ export const GlobalStyles = {
   medium_12: {
     fontFamily: 'Heebo-Medium',
     fontSize: 12,
+  },
+  medium_10: {
+    fontFamily: 'Heebo-Medium',
+    fontSize: 10,
   },
   rowAlignCenter: {
     flexDirection: 'row',

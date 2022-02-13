@@ -36,9 +36,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   buttonView: {
-    paddingHorizontal: 20,
+    paddingHorizontal: 14,
     borderRadius: 25,
-    paddingVertical: 10,
+    paddingVertical: 6,
     elevation: 4,
     backgroundColor: colors.darkBlue,
   },

@@ -3,7 +3,12 @@ import {View, StyleSheet, Text, ScrollView} from 'react-native';
 import ButtonComponent from '../../components/ButtonComponent';
 import HeaderComponent from '../../components/HeaderComponent';
 import InputComponent from './moduleComponents/InputComponent';
-import {colors, GlobalStyles, subText} from '../../utils/Constant';
+import {
+  colors,
+  deviceHeight,
+  GlobalStyles,
+  subText,
+} from '../../utils/Constant';
 import {strings} from '../../utils/String';
 import SelectedKeywords from './moduleComponents/SelectedWords';
 import {displaySubText} from '../../utils/CommonUtil';
@@ -49,12 +54,12 @@ const HomeScreen = () => {
       <HeaderComponent title={strings.iHave} />
       <ScrollView contentContainerStyle={styles.container}>
         <View style={styles.counterContainer}>
-          <Text style={styles.fadedText}>33/800</Text>
+          <Text style={[styles.counterText]}>33/800</Text>
         </View>
         <View style={styles.headingContainer}>
           <Text style={styles.heading}>{strings.listAllITems}</Text>
           <Text style={styles.fadedText}>
-            like {displaySubText(subText)} etc.
+            Like {displaySubText(subText)} etc.
           </Text>
         </View>
         <InputComponent
@@ -67,7 +72,21 @@ const HomeScreen = () => {
         )}
       </ScrollView>
       <View style={styles.footer}>
-        <ButtonComponent title={strings.next} />
+        <View>
+          <Text style={{fontSize: 20}}>
+            {'\u2022'}
+            {'\u2022'}
+            {'\u2022'}
+            {'\u2022'}
+            {'\u2022'}
+          </Text>
+        </View>
+        <View style={styles.record}>
+          <Text style={styles.recordHeading}>{strings.harryPotter} </Text>
+          <Text style={styles.recordSubHeading}>
+            {strings.speakOutKeywords}
+          </Text>
+        </View>
       </View>
       <ActivityIndicatorComponent showLoader={showLoader} />
     </>
@@ -87,26 +106,38 @@ const styles = StyleSheet.create({
   },
   headingContainer: {paddingHorizontal: 16, marginBottom: 25},
   heading: {
-    ...GlobalStyles.medium_16,
+    ...GlobalStyles.medium_15,
     color: colors.darkBlue,
-    lineHeight: 20,
+    lineHeight: 17,
+    marginBottom: 3,
   },
   counterContainer: {
     width: '100%',
-    padding: 5,
+    marginTop: 6,
+    paddingRight: 5,
     alignItems: 'flex-end',
+  },
+  counterText: {
+    opacity: 0.5,
+    color: colors.mediumGrey,
+    lineHeight: 12,
+    ...GlobalStyles.medium_10,
   },
   fadedText: {
     opacity: 0.5,
     color: colors.mediumGrey,
-    lineHeight: 19,
-    ...GlobalStyles.medium_15,
+    lineHeight: 16,
+    ...GlobalStyles.medium_12,
   },
   footer: {
     alignItems: 'center',
-    backgroundColor: colors.white,
+    backgroundColor: colors.recordBlue,
     borderColor: colors.whiteSmoke,
-    padding: 20,
+    height: 160,
+    position: 'absolute',
+    top: deviceHeight - 160,
+    width: '100%',
+    alignSelf: 'stretch',
     borderTopWidth: 1,
   },
   browseComponent: {
@@ -115,5 +146,19 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     borderColor: colors.whiteSmoke,
     borderBottomWidth: 1,
+  },
+  record: {
+    flex: 1,
+    paddingTop: 30,
+  },
+  recordHeading: {
+    ...GlobalStyles.medium_15,
+    color: colors.white,
+    textAlign: 'center',
+    fontWeight: 'bold',
+  },
+  recordSubHeading: {
+    ...GlobalStyles.medium_14,
+    color: colors.addTextBackground,
   },
 });

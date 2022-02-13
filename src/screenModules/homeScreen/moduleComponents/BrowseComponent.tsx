@@ -31,7 +31,7 @@ const BrowseComponent = (props: Props) => {
             <TouchableOpacity
               style={{alignSelf: 'flex-end'}}
               onPress={onDeletePress}>
-              <Delete height={14} width={14} />
+              <Delete height={18} width={18} />
             </TouchableOpacity>
           </View>
         </>
@@ -49,12 +49,15 @@ const styles = StyleSheet.create({
   button: {
     padding: 2,
     alignSelf: 'flex-start',
-    borderRadius: 5,
-    paddingHorizontal: 10,
+    borderRadius: 2,
+    borderWidth:1,
+    borderColor:colors.whiteSmoke,
+    paddingHorizontal: 5,
     backgroundColor: colors.white,
-    elevation: 2,
+    elevation: 1,
   },
   browseText: {
+    ...GlobalStyles.medium_12,
     color: colors.darkBlue,
   },
   fadedText: {
