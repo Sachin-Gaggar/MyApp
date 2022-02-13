@@ -1,10 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {
-  View,
-  StyleSheet,
-  Text,
-  ScrollView,
-} from 'react-native';
+import {View, StyleSheet, Text, ScrollView} from 'react-native';
 import ButtonComponent from '../../components/ButtonComponent';
 import HeaderComponent from '../../components/HeaderComponent';
 import InputComponent from './moduleComponents/InputComponent';
@@ -18,9 +13,9 @@ const HomeScreen = () => {
   const [selectedWords, setSelectedWords] = useState<string[]>([]);
   const [showLoader, setShowLoader] = useState<boolean>(false);
   const keyboardRef = useRef();
-  const [keyboardShow,showKeyboard] = useState(false);
+  const [keyboardShow, showKeyboard] = useState(false);
   useEffect(() => {
-    keyboardRef?.current.focus();
+    keyboardShow && keyboardRef?.current.focus();
   }, [keyboardShow]);
 
   const onAddPress = (text: string) => {
@@ -40,14 +35,14 @@ const HomeScreen = () => {
     setSelectedWords(selectedArrays);
     setShowLoader(false);
   };
-  const onEnterPress = text => {
+  const onEnterPress = (text: string) => {
     let words = [...selectedWords];
-    showKeyboard(false)
+    showKeyboard(false);
     if (!words.includes(text)) {
       words.push(text);
       setSelectedWords(words);
-      showKeyboard(true)
     }
+    showKeyboard(true);
   };
   return (
     <>
