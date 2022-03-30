@@ -56,7 +56,6 @@ export default SelectedKeywords;
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-
     flex: 1,
   },
   selectedView: {

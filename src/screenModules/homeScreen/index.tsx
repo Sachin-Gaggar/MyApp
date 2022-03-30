@@ -98,6 +98,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: colors.white,
     flexGrow: 1,
+    justifyContent: 'space-between',
   },
   buttonView: {
     padding: 15,
@@ -134,8 +135,6 @@ const styles = StyleSheet.create({
     backgroundColor: colors.recordBlue,
     borderColor: colors.whiteSmoke,
     height: 160,
-    position: 'absolute',
-    top: deviceHeight - 160,
     width: '100%',
     alignSelf: 'stretch',
     borderTopWidth: 1,

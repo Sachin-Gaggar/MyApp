@@ -40,8 +40,9 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   text: {
-    ...GlobalStyles.medium_blueShade_20,
-    fontWeight: 'bold',
+    // ...GlobalStyles.medium_blueShade_20,
+    fontSize:22,
+    color:'red'
   },
   back: {position: 'absolute',bottom:-9},
 });
