@@ -35,6 +35,8 @@ export const screenNames = {
 
 export const imagePath = {
   mic: require('../assets/image/mic.png'),
+  tick: require('../assets/image/tick.png'),
+  hourglass: require('../assets/image/hourglass.png'),
 };
 
 export const subText = [
